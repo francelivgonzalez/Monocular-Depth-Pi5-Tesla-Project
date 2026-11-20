@@ -1,26 +1,33 @@
 # Monocular-Depth-Pi5-Tesla-Project
-_PERSONAL PROJECT_
+> Turning 2D camera frames into real-time depth maps on edge hardware—with OpenCV, LiteRT, and MiDaS v2.1 on a Raspberry Pi 5.
 
+A vision-only monocular depth estimation pipeline on a Raspberry Pi 5 using OpenCV and LiteRT (MiDaS v2.1 Small) to extract 3D spatial awareness from a single camera without radar or LiDAR.
 
-Monocular depth estimation Raspberry Pi using TFlite and OpenCV. Demonstrates vision-only inference pipeline for autonomous systems with real-time performance on edge hardware. Implements MiDaS v2.1 with custom ISP preprocessing and colormap visualization.
+## What This Project Does
 
-VISION-ONLY MONOCULAR DEPTH ESTIMATION
+Autonomous perception systems need to understand distance and layout in a scene, even from a single camera feed. **Monocular depth estimation** predicts relative depth from 2D images using a trained neural network.
 
+This project runs a lightweight edge inference pipeline on a Raspberry Pi 5 to turn live or recorded camera frames into depth visualizations:
+1. **Frame Capture & Preprocessing:** Capturing frames via OpenCV and normalizing tensors for model input.
+2. **Edge Inference:** Running MiDaS v2.1 Small through LiteRT on embedded hardware.
+3. **Depth Visualization:** Post-processing predicted depth maps with colormap rendering.
 
-OVERVIEW
+## What I'm Focusing On
 
-I built this project as a technical sandbox to prepare for my Camera Systems Development interview at Tesla. My goal was to apply first principles thinking to autonomous vision: extracting 3D spatial awareness from a 2D monocular camera without relying on radar or LiDAR. 
+- **Vision-Only Spatial Awareness:** Exploring how depth cues can be estimated purely from camera pixels without radar or LiDAR.
+- **Edge Inference Performance:** Running MiDaS v2.1 Small with LiteRT on a Raspberry Pi 5 to keep latency low on resource-constrained hardware.
+- **Preprocessing & Colormap Pipeline:** Moving smoothly from frame capture and tensor normalization to inference and colormap output.
+- **First-Principles Camera Thinking:** Using this repo as a hands-on sandbox to practice end-to-end camera-to-perception reasoning.
 
-This repository demonstrates a complete edge inference pipeline, running a lightweight neural network (MiDaS v2.1) on a Raspberry Pi 5 to generate real-time depth maps.
+## How the Pipeline Is Set Up
 
+- **Hardware Target:** Raspberry Pi 5 running a single-camera vision pipeline.
+- **Capture & Preprocessing (OpenCV + NumPy):** Reading frames, resizing/formatting inputs, and normalizing tensors for inference.
+- **Inference Runtime (LiteRT):** Executing the MiDaS v2.1 Small model efficiently on edge hardware.
+- **Post-Processing:** Mapping raw depth predictions into human-readable colormap visualizations.
 
-CORE COMPETENCIES DEMONSTRATED
-1. Vision-Only Philosophy: Proving that spatial data can be derived purely from pixel data using ML, aligning with a radar-less approach.
-2. Edge Inference: Deploying a model using LiteRT for high-throughput performance on resource-constrained embedded hardware.
-3. ISP Pipeline Architecture: Building a custom image processing pipeline, from raw frame capture via OpenCV, tensor normalization, inference execution, to post-processing with colormap visualizations.
+## Tech Stack
 
-
-TECH STACK
-- Hardware: Raspberry Pi 5
-- Software: Python, OpenCV, LiteRT, NumPy
-- Model: MiDaS v2.1 Small
+- **Hardware:** Raspberry Pi 5
+- **Software:** Python, OpenCV, LiteRT, NumPy
+- **Model:** MiDaS v2.1 Small
