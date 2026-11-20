@@ -1,5 +1,5 @@
 # Monocular-Depth-Pi5-Tesla-Project
-> Turning 2D camera frames into real-time depth maps on edge hardware—with OpenCV, LiteRT, and MiDaS v2.1 on a Raspberry Pi 5.
+> Turning 2D camera frames into real-time depth maps on edge hardware-with OpenCV, LiteRT, and MiDaS v2.1 on a Raspberry Pi 5.
 
 A vision-only monocular depth estimation pipeline on a Raspberry Pi 5 using OpenCV and LiteRT (MiDaS v2.1 Small) to extract 3D spatial awareness from a single camera without radar or LiDAR.
 
