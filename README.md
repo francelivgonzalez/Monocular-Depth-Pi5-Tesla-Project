@@ -25,9 +25,40 @@ This project runs a lightweight edge inference pipeline on a Raspberry Pi 5 to t
 - **Capture & Preprocessing (OpenCV + NumPy):** Reading frames, resizing/formatting inputs, and normalizing tensors for inference.
 - **Inference Runtime (LiteRT):** Executing the MiDaS v2.1 Small model efficiently on edge hardware.
 - **Post-Processing:** Mapping raw depth predictions into human-readable colormap visualizations.
+- **Modular Structure & Reproducibility:** Separating the pipeline into `src/` modules with a clean `depth.py` entry point, pinned dependencies in `requirements.txt`, `.gitignore`, and `samples/` / `outputs/` for quick verification.
+
+## How to Run
+
+1. Install dependencies from `requirements.txt` in your Python environment on the Raspberry Pi 5:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Place your MiDaS v2.1 Small `.tflite` model under `models/` and run the entry script:
+   ```bash
+   python depth.py
+   ```
 
 ## Tech Stack
 
 - **Hardware:** Raspberry Pi 5
 - **Software:** Python, OpenCV, LiteRT, NumPy
 - **Model:** MiDaS v2.1 Small
+
+## Repository Layout
+
+```text
+Monocular-Depth-Pi5-Tesla-Project/
+├── README.md
+├── requirements.txt          # Pin OpenCV, NumPy, and LiteRT/TFLite runtime dependencies
+├── .gitignore                # Ignore __pycache__, virtual envs, temp frames, or large model weights if external
+├── src/
+│   ├── __init__.py
+│   ├── capture.py            # Camera / video / image frame input handling via OpenCV
+│   ├── preprocess.py         # Resize, color format conversion, and tensor normalization
+│   ├── infer.py              # LiteRT / TFLite interpreter setup and MiDaS v2.1 Small execution
+│   └── postprocess.py        # Depth normalization, colormap rendering, and FPS/latency overlay
+├── models/                   # MiDaS v2.1 Small (.tflite) model file or download/setup notes
+├── samples/                  # Sample input image(s) or short test clip for quick verification
+├── outputs/                  # Example side-by-side RGB + depth colormap renders (keep small/curated)
+└── depth.py                  # Clean CLI entry point wiring capture -> preprocess -> infer -> postprocess
+```
